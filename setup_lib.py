@@ -11,6 +11,20 @@ def install_prereqs():
 	os.system('pip3 install flask pyopenssl')
 	os.system('clear')
 
+def install_node():
+	os.system('clear')
+	os.system('curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -')
+	os.system('sudo apt install nodejs')
+
+def setup_rtc():
+	print("Setting Up RTC")
+	os.system('sudo apt-get install -y python-smbus')
+	os.system('sudo apt-get install -y i2c-tools')
+	os.system('modprobe i2c-bcm2835')
+	os.system('modprobe i2c-dev')
+	os.system('')
+	os.system('echo "dtoverlay=i2c-rtc,ds1307" | sudo tee /boot/config.txt -a')
+
 def copy_configs(wpa_enabled_choice):
 	os.system('mkdir /usr/lib/raspiwifi')
 	os.system('mkdir /etc/raspiwifi')
