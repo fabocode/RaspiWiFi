@@ -1,5 +1,8 @@
 import os
 
+def install_rtc():
+	pass 
+
 def install_node():
 	'''
 		This script install node js to the raspberry pi
