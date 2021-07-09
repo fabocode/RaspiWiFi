@@ -1,7 +1,16 @@
 import os
 
 def install_rtc():
-	pass 
+	'''
+		Requires enabling I2C over `sudo raspi-config`
+	'''
+	print("Setting up RTC...")
+	os.system('sudo apt-get install -y python-smbus')
+	os.system('sudo apt-get install -y i2c-tools')
+	os.system("sed -i '/\[all\]/a dtoverlay=i2c-rtc,ds1307' /boot/config.txt")	# use the rtc-ds1307 in case that you have the same model of rtc 
+	# os.system("sed -i '/\[all\]/a dtoverlay=i2c-rtc,pcf8523' /boot/config.txt") 
+	# os.system("sed -i '/\[all\]/a dtoverlay=i2c-rtc,ds3231' /boot/config.txt")
+	os.system('clear')
 
 def install_node():
 	'''
@@ -25,7 +34,6 @@ def install_prereqs():
 	print()
 	os.system('pip3 install flask pyopenssl')
 	os.system('clear')
-	install_node()
 
 def copy_configs(wpa_enabled_choice):
 	os.system('mkdir /usr/lib/raspiwifi')
