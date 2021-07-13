@@ -25,6 +25,7 @@ if (uninstall_answer.lower() == "y"):
     os.system('mv /etc/dnsmasq.conf.original /etc/dnsmasq.conf 2>/dev/null')
     os.system('rm /etc/hostapd/hostapd.conf')
     os.system('rm /etc/dhcpcd.conf')
+    os.system('sudo rm -rf /home/pi/feedtimer_system')
     os.system('mv /etc/dhcpcd.conf.original /etc/dhcpcd.conf 2>/dev/null')
     os.system('sed -i \'s/# RaspiWiFi Startup//\' /etc/crontab')
     os.system('sed -i \'s/@reboot root run-parts \/etc\/cron.raspiwifi\///\' /etc/crontab')
